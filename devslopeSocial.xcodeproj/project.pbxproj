@@ -19,6 +19,7 @@
 		FEEA9C921E19D22A007C8C69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FEEA9C911E19D22A007C8C69 /* Assets.xcassets */; };
 		FEEA9C951E19D22A007C8C69 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEEA9C931E19D22A007C8C69 /* LaunchScreen.storyboard */; };
 		FEEA9C9D1E19D28C007C8C69 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FEEA9C9C1E19D28C007C8C69 /* GoogleService-Info.plist */; };
+		FEEEF74A1E2096BC00CA1E0E /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEEEF7491E2096BC00CA1E0E /* FBSDKLoginKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,9 @@
 		FEEA9C941E19D22A007C8C69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FEEA9C961E19D22A007C8C69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FEEA9C9C1E19D28C007C8C69 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FEEEF7491E2096BC00CA1E0E /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		FEEFFF4F1E1F3C9800A54EFE /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		FEEFFF511E1F420400A54EFE /* devslopeSocial.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = devslopeSocial.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FEEEF74A1E2096BC00CA1E0E /* FBSDKLoginKit.framework in Frameworks */,
 				2373D4AD5BC6FEE75F742D94 /* Pods_devslopeSocial.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -64,6 +69,7 @@
 		9FBE8D41A0382AAECBF1ADF3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FEEFFF4F1E1F3C9800A54EFE /* AdSupport.framework */,
 				29A2DA9067D9BA0D39DD5F67 /* Pods_devslopeSocial.framework */,
 			);
 			name = Frameworks;
@@ -81,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				FEEA9C891E19D229007C8C69 /* devslopeSocial */,
+				FEEEF7491E2096BC00CA1E0E /* FBSDKLoginKit.framework */,
 				FEEA9C881E19D229007C8C69 /* Products */,
 				48E32513197BCE0F743B0F8B /* Pods */,
 				9FBE8D41A0382AAECBF1ADF3 /* Frameworks */,
@@ -98,6 +105,7 @@
 		FEEA9C891E19D229007C8C69 /* devslopeSocial */ = {
 			isa = PBXGroup;
 			children = (
+				FEEFFF511E1F420400A54EFE /* devslopeSocial.entitlements */,
 				FEE9F2041E1C91AA00B15BF6 /* Util */,
 				FEEA9CA01E19D8DF007C8C69 /* Controller */,
 				FEEA9C9F1E19D8DB007C8C69 /* View */,
@@ -175,6 +183,11 @@
 						CreatedOnToolsVersion = 8.2;
 						DevelopmentTeam = 4LBT7283WA;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -393,7 +406,13 @@
 			baseConfigurationReference = 26EBD2C8E7A30D2D8D1146BC /* Pods-devslopeSocial.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = devslopeSocial/devslopeSocial.entitlements;
 				DEVELOPMENT_TEAM = 4LBT7283WA;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/devslopeSocial",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = devslopeSocial/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.simple.devslopeSocial;
@@ -407,7 +426,13 @@
 			baseConfigurationReference = 2264E7940DF0342163207E67 /* Pods-devslopeSocial.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = devslopeSocial/devslopeSocial.entitlements;
 				DEVELOPMENT_TEAM = 4LBT7283WA;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/devslopeSocial",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = devslopeSocial/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.simple.devslopeSocial;
