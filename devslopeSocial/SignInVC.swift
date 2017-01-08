@@ -15,7 +15,9 @@ import FacebookCore
 
 class SignInVC: UIViewController {
     
+    @IBOutlet weak var emailField: fancyField!
 
+    @IBOutlet weak var pwfield: fancyField!
     
     
     
@@ -23,15 +25,15 @@ class SignInVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-           }
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
 
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        
+         view.addGestureRecognizer(tap)
+           }
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
+    
     
     
     @IBAction func facebookBtnTapped(_ sender: Any) {
@@ -64,6 +66,23 @@ class SignInVC: UIViewController {
     }
     
     
+    @IBAction func signInTapped(_ sender: AnyObject) {
+        if let email = emailField.text, let pw = pwfield.text {
+            FIRAuth.auth()?.signIn(withEmail: email, password: pw, completion: { (user, error) in
+                if error == nil {
+                    print("SAM: Email user authenticate with firebase")
+                } else {
+                    FIRAuth.auth()?.createUser(withEmail: email, password: pw, completion: { (user, error) in
+                        if error != nil {
+                            print("SAM: Unable to authenticate with firebase using email\(error)")
+                        } else {
+                            print("SAM: Successfully able to authenticate with Firebase")
+                        }
+                    })
+                }
+            })
+        }
+    }
     
     
     

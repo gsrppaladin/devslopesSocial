@@ -18,7 +18,7 @@
 		FEEA9C901E19D229007C8C69 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEEA9C8E1E19D229007C8C69 /* Main.storyboard */; };
 		FEEA9C921E19D22A007C8C69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FEEA9C911E19D22A007C8C69 /* Assets.xcassets */; };
 		FEEA9C951E19D22A007C8C69 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEEA9C931E19D22A007C8C69 /* LaunchScreen.storyboard */; };
-		FEEA9C9D1E19D28C007C8C69 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FEEA9C9C1E19D28C007C8C69 /* GoogleService-Info.plist */; };
+		FEEE01081E21A33E0008F723 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FEEE01071E21A33E0008F723 /* GoogleService-Info.plist */; };
 		FEEEF74A1E2096BC00CA1E0E /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEEEF7491E2096BC00CA1E0E /* FBSDKLoginKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -38,7 +38,7 @@
 		FEEA9C911E19D22A007C8C69 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FEEA9C941E19D22A007C8C69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FEEA9C961E19D22A007C8C69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FEEA9C9C1E19D28C007C8C69 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FEEE01071E21A33E0008F723 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FEEEF7491E2096BC00CA1E0E /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		FEEFFF4F1E1F3C9800A54EFE /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		FEEFFF511E1F420400A54EFE /* devslopeSocial.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = devslopeSocial.entitlements; sourceTree = "<group>"; };
@@ -87,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				FEEA9C891E19D229007C8C69 /* devslopeSocial */,
+				FEEE01071E21A33E0008F723 /* GoogleService-Info.plist */,
 				FEEEF7491E2096BC00CA1E0E /* FBSDKLoginKit.framework */,
 				FEEA9C881E19D229007C8C69 /* Products */,
 				48E32513197BCE0F743B0F8B /* Pods */,
@@ -115,7 +116,6 @@
 				FEEA9C911E19D22A007C8C69 /* Assets.xcassets */,
 				FEEA9C931E19D22A007C8C69 /* LaunchScreen.storyboard */,
 				FEEA9C961E19D22A007C8C69 /* Info.plist */,
-				FEEA9C9C1E19D28C007C8C69 /* GoogleService-Info.plist */,
 			);
 			path = devslopeSocial;
 			sourceTree = "<group>";
@@ -215,7 +215,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FEEA9C951E19D22A007C8C69 /* LaunchScreen.storyboard in Resources */,
-				FEEA9C9D1E19D28C007C8C69 /* GoogleService-Info.plist in Resources */,
+				FEEE01081E21A33E0008F723 /* GoogleService-Info.plist in Resources */,
 				FEEA9C921E19D22A007C8C69 /* Assets.xcassets in Resources */,
 				FEEA9C901E19D229007C8C69 /* Main.storyboard in Resources */,
 			);
