@@ -12,6 +12,7 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 import FacebookLogin
 import FacebookCore
+import SwiftKeychainWrapper
 
 class SignInVC: UIViewController {
     
@@ -19,16 +20,26 @@ class SignInVC: UIViewController {
 
     @IBOutlet weak var pwfield: fancyField!
     
-    
+
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
-
+        
+             let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
          view.addGestureRecognizer(tap)
            }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if let _ = KeychainWrapper.standard.string(forKey: KEY_UID) {
+            print("SAM: ID found in keychain")
+            performSegue(withIdentifier: "goToFeed", sender: nil)
+        }
+        
+
+    }
+    
     func dismissKeyboard() {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
@@ -59,7 +70,13 @@ class SignInVC: UIViewController {
                 print("SAM: Unable to authenticate with firebase - \(error)")
             } else {
                 print("SAM: Succesfully authenticated with firebase")
-                
+                if let user = user {
+                    self.completeSignIn(id: user.uid)
+                    
+                    
+                }
+                //                let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+                //self.firebaseAuth(credential)
             }
         })
         
@@ -70,13 +87,21 @@ class SignInVC: UIViewController {
         if let email = emailField.text, let pw = pwfield.text {
             FIRAuth.auth()?.signIn(withEmail: email, password: pw, completion: { (user, error) in
                 if error == nil {
-                    print("SAM: Email user authenticate with firebase")
+                    print("SAM: Email user authenticate with Firebase")
+                    if let user = user {
+                        self.completeSignIn(id: user.uid)
+                    }
+                    
                 } else {
                     FIRAuth.auth()?.createUser(withEmail: email, password: pw, completion: { (user, error) in
                         if error != nil {
                             print("SAM: Unable to authenticate with firebase using email\(error)")
                         } else {
                             print("SAM: Successfully able to authenticate with Firebase")
+                            if let user = user {
+                                self.completeSignIn(id: user.uid)
+                            }
+                            
                         }
                     })
                 }
@@ -85,6 +110,12 @@ class SignInVC: UIViewController {
     }
     
     
+    
+    func completeSignIn(id: String) {
+        KeychainWrapper.standard.set(id, forKey: KEY_UID)
+        print("SAM: data saved to KeyChain")
+        performSegue(withIdentifier: "goToFeed", sender: nil)
+    }
     
     
     

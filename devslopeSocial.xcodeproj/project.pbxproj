@@ -19,6 +19,7 @@
 		FEEA9C921E19D22A007C8C69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FEEA9C911E19D22A007C8C69 /* Assets.xcassets */; };
 		FEEA9C951E19D22A007C8C69 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEEA9C931E19D22A007C8C69 /* LaunchScreen.storyboard */; };
 		FEEE01081E21A33E0008F723 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FEEE01071E21A33E0008F723 /* GoogleService-Info.plist */; };
+		FEEE010A1E21C9CE0008F723 /* feedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEE01091E21C9CE0008F723 /* feedVC.swift */; };
 		FEEEF74A1E2096BC00CA1E0E /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEEEF7491E2096BC00CA1E0E /* FBSDKLoginKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +40,7 @@
 		FEEA9C941E19D22A007C8C69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FEEA9C961E19D22A007C8C69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FEEE01071E21A33E0008F723 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FEEE01091E21C9CE0008F723 /* feedVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = feedVC.swift; sourceTree = "<group>"; };
 		FEEEF7491E2096BC00CA1E0E /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		FEEFFF4F1E1F3C9800A54EFE /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		FEEFFF511E1F420400A54EFE /* devslopeSocial.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = devslopeSocial.entitlements; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				FEEA9C8C1E19D229007C8C69 /* SignInVC.swift */,
+				FEEE01091E21C9CE0008F723 /* feedVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -280,6 +283,7 @@
 				FEE9F2081E1C94DF00B15BF6 /* roundBtn.swift in Sources */,
 				FEEA9C8D1E19D229007C8C69 /* SignInVC.swift in Sources */,
 				FEEA9C8B1E19D229007C8C69 /* AppDelegate.swift in Sources */,
+				FEEE010A1E21C9CE0008F723 /* feedVC.swift in Sources */,
 				FEE9F20A1E1C969E00B15BF6 /* fancyField.swift in Sources */,
 				FEE9F2061E1C922100B15BF6 /* Constants.swift in Sources */,
 				FEE9F20C1E1C981300B15BF6 /* FancyBtn.swift in Sources */,
