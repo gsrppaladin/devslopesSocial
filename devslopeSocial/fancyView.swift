@@ -19,9 +19,6 @@ class fancyView: UIView {
         layer.shadowRadius = 5.0 //how far it blurs out
         layer.shadowOffset = CGSize(width: 1.0, height: 1.0) //the bounds of the view, how far it will go.
         layer.cornerRadius = 2.0
-    
-    
-    
     }
 
 
