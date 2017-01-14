@@ -59,7 +59,7 @@ class SignInVC: UIViewController {
             } else {
                 print("SAM: Successfully authenticated with Facebook")
                 let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
-                let userData = ["provider": credential.provider]
+                
                 self.firebaseAuth(credential)
             }
         }
