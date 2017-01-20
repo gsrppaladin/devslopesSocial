@@ -22,9 +22,9 @@
 		FEEA9C951E19D22A007C8C69 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEEA9C931E19D22A007C8C69 /* LaunchScreen.storyboard */; };
 		FEECCFF21E22F060007779E3 /* circleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEECCFF11E22F060007779E3 /* circleView.swift */; };
 		FEECCFF41E2320C3007779E3 /* postCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEECCFF31E2320C3007779E3 /* postCell.swift */; };
-		FEEE01081E21A33E0008F723 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FEEE01071E21A33E0008F723 /* GoogleService-Info.plist */; };
 		FEEE010A1E21C9CE0008F723 /* feedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEE01091E21C9CE0008F723 /* feedVC.swift */; };
 		FEEEF74A1E2096BC00CA1E0E /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEEEF7491E2096BC00CA1E0E /* FBSDKLoginKit.framework */; };
+		FEF9A3571E319FB1009C256D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FEF9A3561E319FB1009C256D /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,11 +47,11 @@
 		FEEA9C961E19D22A007C8C69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FEECCFF11E22F060007779E3 /* circleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = circleView.swift; sourceTree = "<group>"; };
 		FEECCFF31E2320C3007779E3 /* postCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = postCell.swift; sourceTree = "<group>"; };
-		FEEE01071E21A33E0008F723 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FEEE01091E21C9CE0008F723 /* feedVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = feedVC.swift; sourceTree = "<group>"; };
 		FEEEF7491E2096BC00CA1E0E /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		FEEFFF4F1E1F3C9800A54EFE /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		FEEFFF511E1F420400A54EFE /* devslopeSocial.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = devslopeSocial.entitlements; sourceTree = "<group>"; };
+		FEF9A3561E319FB1009C256D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,7 +105,6 @@
 			isa = PBXGroup;
 			children = (
 				FEEA9C891E19D229007C8C69 /* devslopeSocial */,
-				FEEE01071E21A33E0008F723 /* GoogleService-Info.plist */,
 				FEEEF7491E2096BC00CA1E0E /* FBSDKLoginKit.framework */,
 				FEEA9C881E19D229007C8C69 /* Products */,
 				48E32513197BCE0F743B0F8B /* Pods */,
@@ -135,6 +134,7 @@
 				FEEA9C911E19D22A007C8C69 /* Assets.xcassets */,
 				FEEA9C931E19D22A007C8C69 /* LaunchScreen.storyboard */,
 				FEEA9C961E19D22A007C8C69 /* Info.plist */,
+				FEF9A3561E319FB1009C256D /* GoogleService-Info.plist */,
 			);
 			path = devslopeSocial;
 			sourceTree = "<group>";
@@ -238,7 +238,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FEEA9C951E19D22A007C8C69 /* LaunchScreen.storyboard in Resources */,
-				FEEE01081E21A33E0008F723 /* GoogleService-Info.plist in Resources */,
+				FEF9A3571E319FB1009C256D /* GoogleService-Info.plist in Resources */,
 				FEEA9C921E19D22A007C8C69 /* Assets.xcassets in Resources */,
 				FEEA9C901E19D229007C8C69 /* Main.storyboard in Resources */,
 			);

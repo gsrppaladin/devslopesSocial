@@ -27,15 +27,17 @@ class SignInVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-             let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
          view.addGestureRecognizer(tap)
+        
            }
     
     override func viewDidAppear(_ animated: Bool) {
-        if let _ = KeychainWrapper.standard.string(forKey: KEY_UID) {
+        if let _ = KeychainWrapper.standard.string(forKey: KEY_UID), let user = FIRAuth.auth()?.currentUser {
             print("SAM: ID found in keychain")
             performSegue(withIdentifier: "goToFeed", sender: nil)
         }
+        
         
 
     }
@@ -121,7 +123,7 @@ class SignInVC: UIViewController {
         
     }
     
-    
+
     
 
 

@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import FirebaseStorage
+import Firebase
 
 class Post {
     
@@ -15,6 +17,7 @@ class Post {
     private var _imageUrl: String!
     private var _likes: Int!
     private var _postKey: String!
+    private var _postRef: FIRDatabaseReference!
     
     
     var caption: String {
@@ -54,8 +57,7 @@ class Post {
         
     }
     
-    
-    
+        
     
     
     

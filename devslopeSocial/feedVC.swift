@@ -18,8 +18,9 @@ class feedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
 
     var posts = [Post]()
     var imagePicker: UIImagePickerController!
-    
-    
+    static var imageCache: NSCache<NSString, UIImage> = NSCache()
+    var messages: [FIRDataSnapshot]! = []
+    var storageRef: FIRStorageReference!
     
     
     override func viewDidLoad() {
@@ -72,16 +73,32 @@ class feedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return posts.count
     }
+   
+    
+    func configureStorage() {
+        let storageUrl = FIRApp.defaultApp()?.options.storageBucket
+        storageRef = FIRStorage.storage().reference(forURL: "gs://" + storageUrl!)
+    }
+
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+
         let post = posts[indexPath.row]
         if let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as? postCell {
-            cell.configureCell(post: post)
-            return cell
+            if let img = feedVC.imageCache.object(forKey: post.imageUrl as NSString) {
+                cell.configureCell(post: post, img: img)
+                return cell
+            } else {
+                cell.configureCell(post: post)
+                return cell
+            }
         } else {
             return postCell()
         }
+        
     }
+
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
@@ -89,14 +106,27 @@ class feedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         } else {
             print("SAM: A valid Image wasn't selected")
         }
-        
-        
-        
         imagePicker.dismiss(animated: true, completion: nil)
     }
-    
-   
-    
 
-  
+
+
+
+
+
+
+
+
+    //
+    //            if let img = feedVC.imageCache.object(forKey: post.imageUrl as NSString) {
+    //                cell.configureCell(post: post, img: img)
+    //            }
+    //            else {
+    //                cell.configureCell(post: post, img: nil)
+    //                }
+    //            return cell
+    //            } else {
+    //           return postCell()
+
+
 }
