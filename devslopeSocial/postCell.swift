@@ -10,6 +10,9 @@ import UIKit
 import Firebase
 
  let storage = FIRStorage.storage()
+let storageRef = storage.reference()
+let gsReference = storage.reference(forURL: "gs://devslopessocial-1f400.appspot.com/post-pics/background.jpeg")
+
 
 class postCell: UITableViewCell {
    
@@ -24,69 +27,40 @@ class postCell: UITableViewCell {
     @IBOutlet weak var likesLbl: UILabel!
     
     var post: Post!
-    
-    
-   
-    
-    
-   
-    
-    
+
     func configureCell(post: Post, img: UIImage? = nil) {
         self.post = post
         self.caption.text = post.caption
         self.likesLbl.text = "\(post.likes)"
         
-
         if img != nil {
             self.postImg.image = img
-        } 
-        else {
-            print("SAM: This is where it gets annoying!!!!")
-            //let ref = FIRStorage.storage().reference(forURL: post.imageUrl)
-            let gsReference = storage.reference(forURL: "gs://devslopessocial-1f400.appspot.com/")
-            
-            
-            gsReference.data(withMaxSize: 1 * 1024 * 1024, completion: { (data, error) in
+        } else {
+            gsReference.data(withMaxSize: 2 * 1024 * 1024, completion: { (data, error) in
                 if error != nil {
                     print("SAM: Unable to download image from firebase storage \(error)")
                 } else {
-                    let image = UIImage(data: data!)
                     print("SAM: Image downloaded from Firebase Storage.")
                     if let imgData = data {
                         if let img = UIImage(data: imgData) {
                             self.postImg.image = img
                             feedVC.imageCache.setObject(img, forKey: post.imageUrl as NSString)
-                        //what was done above was downloading images and saving them in the cache, if there is an image. 
+                            //what was done above was downloading images and saving them in the cache, if there is an image.
                         }
                     }
                 }
                 
             })
-            
         }
-        
-        
     }
+
     
-
+    
+    
+    
+    
+    
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

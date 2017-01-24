@@ -17,42 +17,28 @@ import SwiftKeychainWrapper
 class SignInVC: UIViewController {
     
     @IBOutlet weak var emailField: fancyField!
-
+    
     @IBOutlet weak var pwfield: fancyField!
-    
 
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
-         view.addGestureRecognizer(tap)
-        
-           }
-    
+        view.addGestureRecognizer(tap)
+    }
     override func viewDidAppear(_ animated: Bool) {
-        if let _ = KeychainWrapper.standard.string(forKey: KEY_UID), let user = FIRAuth.auth()?.currentUser {
+        if let _ = KeychainWrapper.standard.string(forKey: KEY_UID) {
             print("SAM: ID found in keychain")
             performSegue(withIdentifier: "goToFeed", sender: nil)
         }
-        
-        
-
     }
     
     func dismissKeyboard() {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
     }
-    
-    
-    
     @IBAction func facebookBtnTapped(_ sender: Any) {
-        
         let facebookLogin = FBSDKLoginManager()
-        
         facebookLogin.logIn(withReadPermissions: ["email"], from: self) { (result, error) in
             if error != nil {
                 print("SAM: Unable to authenticate with Facebook - \(error)")
@@ -61,12 +47,11 @@ class SignInVC: UIViewController {
             } else {
                 print("SAM: Successfully authenticated with Facebook")
                 let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
-                
+                let userData = ["provider": credential.provider]
                 self.firebaseAuth(credential)
             }
         }
     }
-    
     func firebaseAuth(_ credential: FIRAuthCredential) {
         FIRAuth.auth()?.signIn(with: credential, completion: { (user, error) in
             if error != nil {
@@ -76,15 +61,11 @@ class SignInVC: UIViewController {
                 if let user = user {
                     let userData = ["provider": user.providerID]
                     self.completeSignIn(id: user.uid, userData: userData)
-                    
-                    
                 }
             }
         })
         
     }
-    
-    
     @IBAction func signInTapped(_ sender: AnyObject) {
         if let email = emailField.text, let pw = pwfield.text {
             FIRAuth.auth()?.signIn(withEmail: email, password: pw, completion: { (user, error) in
@@ -112,9 +93,6 @@ class SignInVC: UIViewController {
             })
         }
     }
-    
-    
-    
     func completeSignIn(id: String, userData: Dictionary<String, String>) {
         DataService.ds.createFirebaseDBUser(uid: id, userData: userData)
         KeychainWrapper.standard.set(id, forKey: KEY_UID)
@@ -122,12 +100,5 @@ class SignInVC: UIViewController {
         performSegue(withIdentifier: "goToFeed", sender: nil)
         
     }
-    
-
-    
-
-
-    
-
 }
 

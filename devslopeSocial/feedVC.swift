@@ -32,6 +32,11 @@ class feedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         imagePicker.allowsEditing = true
         imagePicker.delegate = self
         
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
         DataService.ds.REF_POSTS.observe(.value, with: { (snapshot) in
             if let snapshot = snapshot.children.allObjects as? [FIRDataSnapshot] {
                 for snap in snapshot {
@@ -45,8 +50,10 @@ class feedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
             }
             self.tableView.reloadData()
         })
-        
+
     }
+    
+    
 
     
     @IBAction func signOutTapped(_ sender: Any) {
@@ -75,16 +82,13 @@ class feedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     }
    
     
-    func configureStorage() {
-        let storageUrl = FIRApp.defaultApp()?.options.storageBucket
-        storageRef = FIRStorage.storage().reference(forURL: "gs://" + storageUrl!)
-    }
-
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
 
         let post = posts[indexPath.row]
+        
         if let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as? postCell {
             if let img = feedVC.imageCache.object(forKey: post.imageUrl as NSString) {
                 cell.configureCell(post: post, img: img)
@@ -109,24 +113,6 @@ class feedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         imagePicker.dismiss(animated: true, completion: nil)
     }
 
-
-
-
-
-
-
-
-
-    //
-    //            if let img = feedVC.imageCache.object(forKey: post.imageUrl as NSString) {
-    //                cell.configureCell(post: post, img: img)
-    //            }
-    //            else {
-    //                cell.configureCell(post: post, img: nil)
-    //                }
-    //            return cell
-    //            } else {
-    //           return postCell()
 
 
 }
