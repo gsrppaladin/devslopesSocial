@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
- let storage = FIRStorage.storage()
+let storage = FIRStorage.storage()
 let storageRef = storage.reference()
 let gsReference = storage.reference(forURL: "gs://devslopessocial-1f400.appspot.com/post-pics/background.jpeg")
 
@@ -27,7 +27,8 @@ class postCell: UITableViewCell {
     @IBOutlet weak var likesLbl: UILabel!
     
     var post: Post!
-
+    
+    
     func configureCell(post: Post, img: UIImage? = nil) {
         self.post = post
         self.caption.text = post.caption
@@ -53,15 +54,5 @@ class postCell: UITableViewCell {
             })
         }
     }
-
-    
-    
-    
-    
-    
     
 }
-
-
-
-

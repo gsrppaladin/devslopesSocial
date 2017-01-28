@@ -15,6 +15,8 @@ class feedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var imageAdd: circleView!
+    @IBOutlet weak var postField: fancyField!
+    var imageSelected = false
 
     var posts = [Post]()
     var imagePicker: UIImagePickerController!
@@ -56,12 +58,12 @@ class feedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     
 
     
-    @IBAction func signOutTapped(_ sender: Any) {
-        KeychainWrapper.standard.removeObject(forKey: KEY_UID)
-        print("SAM: ID removed from keychain")
-        try! FIRAuth.auth()?.signOut()
-        performSegue(withIdentifier: "goToSignIn", sender: nil)
-    }
+//    @IBAction func signOutTapped(_ sender: Any) {
+//        KeychainWrapper.standard.removeObject(forKey: KEY_UID)
+//        print("SAM: ID removed from keychain")
+//        try! FIRAuth.auth()?.signOut()
+//        performSegue(withIdentifier: "goToSignIn", sender: nil)
+//    }
     
     @IBAction func addImageTapped(_ sender: AnyObject) {
         present(imagePicker, animated: true, completion: nil)
@@ -107,12 +109,42 @@ class feedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
             imageAdd.image = image
+            imageSelected = true
         } else {
             print("SAM: A valid Image wasn't selected")
         }
         imagePicker.dismiss(animated: true, completion: nil)
     }
 
+    
+    
+    @IBAction func postBtnTapped(_ sender: Any) {
+        guard let caption = postField.text, caption != "" else {
+            print("SAM: Caption must be entered")
+            return
+        }
+        guard let img = imageAdd.image, imageSelected == true else {
+            print("SAM: An image must be selected")
+            return
+        }
+        if let imgData = UIImageJPEGRepresentation(img, 0.2) {
+            
+            let imgUID = NSUUID().uuidString
+            let metadata = FIRStorageMetadata()
+            metadata.contentType = "image/jpeg"
+            //above tells firebase to make the image a jpeg. otherwise it will infer.
+            DataService.ds.REF_POST_IMAGES.child(imgUID).put(imgData, metadata: metadata) { (metadata, error) in
+                if error != nil {
+                    print("SAM: Unable to upload image to firebase storage \(error)")
+                } else {
+                    print("SAM: Successfully uploaded image to firebase storage.")
+                    let downloadURL = metadata?.downloadURL()?.absoluteString
+                    //absoluteString is 
+                }
+                
+            }
+        }
+    }
 
 
 }

@@ -85,7 +85,7 @@
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="sg931172" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hlt-FH-hDH" customClass="fancyField" customModule="devslopeSocial" customModuleProvider="target">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Zebedee11" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hlt-FH-hDH" customClass="fancyField" customModule="devslopeSocial" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="40" width="283" height="25"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.87" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
@@ -192,6 +192,7 @@
                                                 </constraints>
                                                 <connections>
                                                     <outletCollection property="gestureRecognizers" destination="sXH-iv-sKU" appends="YES" id="RkE-Ls-61M"/>
+                                                    <outletCollection property="gestureRecognizers" destination="5jr-Vz-naY" appends="YES" id="AvN-lz-vlu"/>
                                                 </connections>
                                             </imageView>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Add a caption" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4B3-b8-B0C" customClass="fancyField" customModule="devslopeSocial" customModuleProvider="target">
@@ -210,6 +211,9 @@
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="49" id="wCo-NZ-Gco"/>
                                                 </constraints>
                                                 <state key="normal" image="add-post"/>
+                                                <connections>
+                                                    <action selector="postBtnTapped:" destination="6bu-TX-hew" eventType="touchUpInside" id="fI4-bb-31H"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -281,16 +285,16 @@
                                                             </subviews>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="BOe-GJ-3zf">
-                                                            <rect key="frame" x="258.5" y="333" width="76.5" height="22"/>
+                                                            <rect key="frame" x="258" y="333" width="77" height="22"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Likes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1id-b9-Sk0">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="35.5" height="22"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="36" height="22"/>
                                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.54000000000000004" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8888" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zhx-OE-bsG">
-                                                                    <rect key="frame" x="40.5" y="0.0" width="36" height="22"/>
+                                                                    <rect key="frame" x="41" y="0.0" width="36" height="22"/>
                                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.87" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -344,19 +348,16 @@
                     </view>
                     <connections>
                         <outlet property="imageAdd" destination="Zgp-49-msh" id="JAf-9W-Pd4"/>
+                        <outlet property="postField" destination="4B3-b8-B0C" id="Am6-Ek-JfK"/>
                         <outlet property="tableView" destination="vqu-uO-P2y" id="2ps-fv-67A"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="goToSignIn" id="3kQ-IB-IzR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wdN-uY-YzF" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="5jr-Vz-naY">
+                <tapGestureRecognizer id="sXH-iv-sKU" userLabel="sign-out tapped"/>
+                <tapGestureRecognizer id="5jr-Vz-naY" userLabel="addImageTapped">
                     <connections>
-                        <action selector="signOutTapped:" destination="6bu-TX-hew" id="huM-xK-ph4"/>
-                    </connections>
-                </tapGestureRecognizer>
-                <tapGestureRecognizer id="sXH-iv-sKU" userLabel="sign-out tapped">
-                    <connections>
-                        <action selector="addImageTapped:" destination="6bu-TX-hew" id="qSU-7g-4EC"/>
+                        <action selector="addImageTapped:" destination="6bu-TX-hew" id="v6j-G0-0qe"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>

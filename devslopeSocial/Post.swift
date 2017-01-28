@@ -35,7 +35,7 @@ class Post {
     
     init(caption: String, imageUrl: String, likes: Int) {
         self._caption = caption
-        self._imageUrl = caption           //imageUrl
+        self._imageUrl = caption //imageUrl
         self._likes = likes
     }
     
