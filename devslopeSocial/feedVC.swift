@@ -47,6 +47,7 @@ class feedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         DataService.ds.REF_POSTS.observe(.value, with: { (snapshot) in
+            self.posts = []
             if let snapshot = snapshot.children.allObjects as? [FIRDataSnapshot] {
                 for snap in snapshot {
                     print("SNAP: \(snap)")
@@ -56,10 +57,11 @@ class feedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
                         self.posts.append(post)
                     }
                 }
+                
             }
             self.tableView.reloadData()
         })
-
+        
     }
     
     
@@ -101,11 +103,10 @@ class feedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         if let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as? postCell {
             if let img = feedVC.imageCache.object(forKey: post.imageUrl as NSString) {
                 cell.configureCell(post: post, img: img)
-                return cell
             } else {
                 cell.configureCell(post: post)
-                return cell
             }
+            return cell
         } else {
             return postCell()
         }
