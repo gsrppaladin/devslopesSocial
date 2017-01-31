@@ -24,6 +24,11 @@ class feedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     var messages: [FIRDataSnapshot]! = []
     var storageRef: FIRStorageReference!
     
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +39,8 @@ class feedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         imagePicker.allowsEditing = true
         imagePicker.delegate = self
         
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
         
     }
     
@@ -139,12 +146,55 @@ class feedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
                 } else {
                     print("SAM: Successfully uploaded image to firebase storage.")
                     let downloadURL = metadata?.downloadURL()?.absoluteString
-                    //absoluteString is 
+                    if let url = downloadURL {
+                         self.postToFirebase(imgURL: url)
+                    }
+                   
                 }
                 
             }
         }
     }
 
+    
+    func postToFirebase(imgURL: String) {
+        let post: Dictionary<String, Any> = [
+            "caption": postField.text!,
+            "imageUrl": imgURL,
+            "likes": 0
+        ]
+        //this is selecting where we want to put it.
+        let firebasePost = DataService.ds.REF_POSTS.childByAutoId()
+        firebasePost.setValue(post)
+        postField.text = ""
+        imageSelected = false
+        imageAdd.image = UIImage(named: "add-image")
+        
+        tableView.reloadData()
+    }
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 }

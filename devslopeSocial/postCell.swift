@@ -11,7 +11,6 @@ import Firebase
 
 let storage = FIRStorage.storage()
 let storageRef = storage.reference()
-let gsReference = storage.reference(forURL: "gs://devslopessocial-1f400.appspot.com/post-pics/background.jpeg")
 
 
 class postCell: UITableViewCell {
@@ -33,6 +32,8 @@ class postCell: UITableViewCell {
         self.post = post
         self.caption.text = post.caption
         self.likesLbl.text = "\(post.likes)"
+
+        let gsReference = storage.reference(forURL: post.imageUrl)
         
         if img != nil {
             self.postImg.image = img
